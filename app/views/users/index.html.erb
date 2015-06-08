@@ -1,0 +1,14 @@
+This is the homepage after login.
+
+ <%= @users.each do |user| %>
+    <%= user.email %> 
+    <br>
+  <% end %>
+
+
+  <% if current_user.email == 'teacher@teacher.com' %>
+  its working
+  <% end %>
+  <%= current_user %>
+
+<% (binding.pry) %>
