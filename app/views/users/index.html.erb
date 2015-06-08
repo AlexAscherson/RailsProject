@@ -1,14 +1,40 @@
-This is the homepage after login.
 <br>
-This is where the name should be
-<% name = current_user.email %>
+<p>
+This is the User Index page 
+<br>
 
-<%= name %>
 
+
+This Block is dynamic based on user role. <br>
+
+<% if user_signed_in? %>
+  <% case current_user.role 
+  when "Teacher" %>
+    Welcome <strong><%= current_user.name %></strong> You are a teacher. 
+    <p>List of all users and roles</p>
+   <% @users.each do |user| %>
+    <%= user.name %> | <%= user.role %> 
+    <br>
+   <% end %>
+
+
+  <% when "Student" %>
+    Welcome <strong><%= current_user.name %></strong> You are a student Link to student page coming.
+  <% else %>
+    You are not logged in. This isnt working. wrapped it in if.
+  <% end %>
+<% end %>
+
+<br>
+end of dynamic block
+
+
+<br>
 
 
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.name %></strong>.
+  Your role is currently: <strong><%= current_user.role %></strong>.
 <% else %>
   You are not signed in
 <% end %>
@@ -17,14 +43,9 @@ This is where the name should be
 
   <br>
   <br>
-  There is something here
-  <%= current_user %>
+  
 
   <br>
   <br>
-
-  <%= @users.each do |user| %>
-    <%= user.email %> 
-    <br>
-  <% end %>
+  
 

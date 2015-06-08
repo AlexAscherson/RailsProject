@@ -1,6 +1,5 @@
 class Prompt < ActiveRecord::Base
-  has_many :user
-
+  belongs_to :user
   has_many :prompt_responses
   has_many :responses, through: :prompt_responses
 
