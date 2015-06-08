@@ -1,14 +1,30 @@
 This is the homepage after login.
+<br>
+This is where the name should be
+<% name = current_user.email %>
 
- <%= @users.each do |user| %>
+<%= name %>
+
+
+
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.name %></strong>.
+<% else %>
+  You are not signed in
+<% end %>
+ 
+
+
+  <br>
+  <br>
+  There is something here
+  <%= current_user %>
+
+  <br>
+  <br>
+
+  <%= @users.each do |user| %>
     <%= user.email %> 
     <br>
   <% end %>
 
-
-  <% if current_user.email == 'teacher@teacher.com' %>
-  its working
-  <% end %>
-  <%= current_user %>
-
-<% (binding.pry) %>

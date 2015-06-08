@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150608161723) do
+ActiveRecord::Schema.define(version: 20150608191905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "prompt_responses", force: :cascade do |t|
+    t.integer  "prompt_id"
+    t.integer  "response_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "prompts", force: :cascade do |t|
     t.integer  "class_id"
@@ -43,6 +50,8 @@ ActiveRecord::Schema.define(version: 20150608161723) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
