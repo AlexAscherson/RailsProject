@@ -16,15 +16,17 @@ class ResponsesController < ApplicationController
 
   def update
     response = Response.find(params[:id])
+    prompt = Prompt.find(params[:prompt_id])
     if response.update(response_params)
-      redirect_to(response_path(response))
+      redirect_to(prompt_response_path(prompt, response))
     else
       render 'edit'
     end
   end
 
   def edit
-        @response =Response.find(params[:id])
+    @prompt = Prompt.find(params[:prompt_id])
+    @response =Response.find(params[:id])
 
   end
 
