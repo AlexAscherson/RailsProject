@@ -3,6 +3,8 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  
+
   def create
     user = User.new(params.require(:user).permit(:name, :email, :role, :password, :password_confirmation))
 

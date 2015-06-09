@@ -1,2 +1,15 @@
 <h1>Responses#show</h1>
 <p>Find me in app/views/responses/show.html.erb</p>
+
+Response id: 
+<%= @response.id %> <br>
+Response user id:
+<%= @response.user_id %>  <br>
+Prompt id:
+<%= @response.prompt_id %>
+
+  <ul>
+<li> <%= link_to('Edit', edit_response_path(@response.id)) %> </li>
+<li> <%= link_to('Delete', response_path(@response.id), method: :delete) %></li>
+   
+  </ul>

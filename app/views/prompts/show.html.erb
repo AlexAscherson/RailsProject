@@ -1,2 +1,14 @@
 <h1>Prompts#show</h1>
 <p>Find me in app/views/prompts/show.html.erb</p>
+
+Prompt id: 
+<%= @prompt.id %> <br>
+Prompt user id:
+<%= @prompt.user_id %>  <br>
+
+
+
+  <ul>
+<li> <%= link_to('Edit', edit_prompt_path(@prompt.id)) %> </li>
+<li> <%= link_to('Delete', prompt_path(@prompt.id), method: :delete) %></li>  
+  </ul>

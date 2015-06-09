@@ -23,6 +23,28 @@
 
 <p class="admin-navbar">
 
+<% if user_signed_in? %>
+
+<% if current_user.teacher? %>
+  <p>Welcome <%= current_user.name %> You are a Teacher </p>
+  <ul class = 'adminlinks'>
+    <li><a href="/users">List all Users</li></a>
+    <li><a href="/prompts">Administer Prompts</li></a>
+    <li><a href="/responses">View Responses</li></a>
+  </ul>
+
+
+
+<% elsif current_user.student? %>
+  <p>Welcome <%= current_user.name %> You are a Student </p>
+  <ul class = 'studentlinks'>
+    <li><a href="/prompts">Respond to Prompt</li></a>
+    <li><a href="/responses">View Response History</li></a>
+  </ul>
+
+<% end %>
+<% end %>
+
 <%= yield %>
 
 </body>

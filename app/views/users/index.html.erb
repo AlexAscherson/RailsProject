@@ -3,8 +3,12 @@
 This is the User Index page 
 <br>
 
+<% if user_signed_in? %>
+
 <% if current_user.teacher? %>
   <p>teacher</p>
 <% elsif current_user.student? %>
   <p>student</p>
+<% end %>
+
 <% end %>

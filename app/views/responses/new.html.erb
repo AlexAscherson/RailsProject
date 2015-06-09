@@ -3,8 +3,14 @@
 
 <%= form_for @response do |f| %>
 
- <%= f.label :prompt_id %>
- <%= f.number_field :prompt_id %>
+ Enter the User its associated with: <br>
+ <%= f.label :user_id %>
+ <%= f.number_field :user_id %><br>
 
-  <%= f.submit 'Create Response' %>
+ Enter the prompt its associated with: <br>
+ <%= f.label :prompt_id %>
+ <%= f.number_field :prompt_id %><br>
+  
+
+  <%= f.submit 'Create response' %>
 <% end %>

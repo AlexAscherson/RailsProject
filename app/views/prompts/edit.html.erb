@@ -1,2 +1,16 @@
 <h1>Prompts#edit</h1>
 <p>Find me in app/views/prompts/edit.html.erb</p>
+
+<%= form_for @prompt do |f| %>
+
+ <%= f.label :name %>
+ <%= f.text_field :name %>
+
+ <%= f.label :user_id %>
+ <%= f.number_field :user_id %>
+
+
+  
+
+  <%= f.submit 'Update prompt' %>
+<% end %>

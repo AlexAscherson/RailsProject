@@ -45,5 +45,5 @@ end
 private
 
     def response_params
-      params.require(:response).permit(:prompts_id, :user_id)
+      params.require(:response).permit(:prompt_id, :user_id)
     end
