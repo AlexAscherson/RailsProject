@@ -1,15 +1,15 @@
 <h1>Responses#new</h1>
 <p>Find me in app/views/responses/new.html.erb</p>
 
-<%= form_for @response do |f| %>
 
- Enter the User its associated with: <br>
- <%= f.label :user_id %>
- <%= f.number_field :user_id %><br>
 
- Enter the prompt its associated with: <br>
- <%= f.label :prompt_id %>
- <%= f.number_field :prompt_id %><br>
+<%= form_for [@prompt, @response] do |f| %>
+
+
+ <%= f.hidden_field :user_id, :value => current_user.id %>
+
+
+
   
 
   <%= f.submit 'Create response' %>

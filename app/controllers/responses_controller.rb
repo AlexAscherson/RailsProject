@@ -1,12 +1,14 @@
 class ResponsesController < ApplicationController
   def new
+        @prompt = Prompt.find(params[:prompt_id])
         @response = Response.new
   end
 
   def create
     response = Response.create(response_params)
+    prompt = Prompt.find(params[:prompt_id])
     if response.save
-      redirect_to(response_path(response))
+      redirect_to(prompt_response_path(prompt,response))
     else
       render 'new'
     end
@@ -33,6 +35,8 @@ class ResponsesController < ApplicationController
   end
 
   def show
+    binding.pry
+    @prompt = Prompt.find(params[:prompt_id])
     @response = Response.find(params[:id])
 
   end

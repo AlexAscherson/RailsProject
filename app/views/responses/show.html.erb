@@ -9,7 +9,7 @@ Prompt id:
 <%= @response.prompt_id %>
 
   <ul>
-<li> <%= link_to('Edit', edit_response_path(@response.id)) %> </li>
-<li> <%= link_to('Delete', response_path(@response.id), method: :delete) %></li>
+<li> <%= link_to('Edit', edit_prompt_response_path(@prompt.id, @response.id)) %> </li>
+<li> <%= link_to('Delete', prompt_response_path(@prompt.id, @response.id), method: :delete) %></li>
    
   </ul>

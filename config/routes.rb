@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :prompts do 
+    resources :responses
+  end
 
-  get '/responses' => 'responses#index'
-  resources :responses
+
 
   # get 'responses/new'
 
@@ -17,8 +19,6 @@ Rails.application.routes.draw do
 
   # get 'responses/index'
 
-  get '/prompts' => 'prompts#index'
-  resources :prompts
 
   # get 'prompts/new'
 
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   # get 'prompts/index'
 
-  devise_for :users#, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations"}
   root to: 'users#index'
 
 

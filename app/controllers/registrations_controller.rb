@@ -1,21 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
-  def new
-    super
-  end
 
-  
+ private
 
-  def create
-    user = User.new(params.require(:user).permit(:name, :email, :role, :password, :password_confirmation))
+ def sign_up_params
+   params.require(:user).permit(:name, :role, :email, :password, :password_confirmation)
+ end
 
-    if user.save
-      redirect_to root_path
-    else
-      render 'new'
-    end
-  end
-
-  def update
-    super
-  end
-end 
+ def account_update_params
+   params.require(:user).permit(:name, :role, :email, :password, :password_confirmation, :current_password)
+ end
+end
