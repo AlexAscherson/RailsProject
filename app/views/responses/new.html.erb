@@ -1,0 +1,10 @@
+<h1>Responses#new</h1>
+<p>Find me in app/views/responses/new.html.erb</p>
+
+<%= form_for @response do |f| %>
+
+ <%= f.label :prompt_id %>
+ <%= f.number_field :prompt_id %>
+
+  <%= f.submit 'Create Response' %>
+<% end %>

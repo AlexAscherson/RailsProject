@@ -1,0 +1,8 @@
+<h1>Responses#index</h1>
+<p>Find me in app/views/responses/index.html.erb</p>
+
+<p>List of all prompts and thier ids</p>
+   <% @responses.each do |response| %>
+    <%= response.prompt_id %> | <%= response.id %> 
+    <br>
+   <% end %>

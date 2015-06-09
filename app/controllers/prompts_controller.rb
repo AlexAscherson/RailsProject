@@ -28,7 +28,7 @@ class PromptsController < ApplicationController
   end
 
   def index
-      @prompts = Prompt.all
+    @prompts = Prompt.all
   end
 end
 

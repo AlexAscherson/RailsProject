@@ -3,49 +3,8 @@
 This is the User Index page 
 <br>
 
-
-
-This Block is dynamic based on user role. <br>
-
-<% if user_signed_in? %>
-  <% case current_user.role 
-  when "Teacher" %>
-    Welcome <strong><%= current_user.name %></strong> You are a teacher. 
-    <p>List of all users and roles</p>
-   <% @users.each do |user| %>
-    <%= user.name %> | <%= user.role %> 
-    <br>
-   <% end %>
-
-
-  <% when "Student" %>
-    Welcome <strong><%= current_user.name %></strong> You are a student Link to student page coming.
-  <% else %>
-    You are not logged in. This isnt working. wrapped it in if.
-  <% end %>
+<% if current_user.teacher? %>
+  <p>teacher</p>
+<% elsif current_user.student? %>
+  <p>student</p>
 <% end %>
-
-<br>
-end of dynamic block
-
-
-<br>
-
-
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.name %></strong>.
-  Your role is currently: <strong><%= current_user.role %></strong>.
-<% else %>
-  You are not signed in
-<% end %>
- 
-
-
-  <br>
-  <br>
-  
-
-  <br>
-  <br>
-  
-
