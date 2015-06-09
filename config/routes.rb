@@ -1,11 +1,27 @@
 Rails.application.routes.draw do
 
+  get '/prompts' => 'prompts#index'
+  resources :prompts
+
+  # get 'prompts/new'
+
+  # get 'prompts/create'
+
+  # get 'prompts/update'
+
+  # get 'prompts/edit'
+
+  # get 'prompts/destroy'
+
+  # get 'prompts/show'
+
+  # get 'prompts/index'
+
   devise_for :users
   root to: 'users#index'
 
 
-  get '/prompts' => 'prompts#index'
-  resources :prompts
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
