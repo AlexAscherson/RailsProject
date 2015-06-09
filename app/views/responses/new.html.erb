@@ -7,6 +7,14 @@
 
 
  <%= f.hidden_field :user_id, :value => current_user.id %>
+ <%= f.hidden_field :prompt_id, :value => @prompt.id %>
+
+ <%= f.select(:content, ['I understood this part of the lesson', 'I did not undertand this part of the lesson', 'You are going to fast', 'Please repeat this part of the lesson'], {include_blank: "What are you feeling?"}, { :class => 'my_style_class' }) %>
+
+ 
+
+
+
 
 
 

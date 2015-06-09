@@ -15,8 +15,9 @@ class ResponsesController < ApplicationController
   end
 
   def update
-    response = Response.find(params[:id])
     prompt = Prompt.find(params[:prompt_id])
+    response = Response.find(params[:id])
+    
     if response.update(response_params)
       redirect_to(prompt_response_path(prompt, response))
     else
@@ -37,7 +38,7 @@ class ResponsesController < ApplicationController
   end
 
   def show
-    binding.pry
+    
     @prompt = Prompt.find(params[:prompt_id])
     @response = Response.find(params[:id])
 
@@ -51,5 +52,5 @@ end
 private
 
     def response_params
-      params.require(:response).permit(:prompt_id, :user_id)
+      params.require(:response).permit(:prompt_id, :user_id, :content)
     end

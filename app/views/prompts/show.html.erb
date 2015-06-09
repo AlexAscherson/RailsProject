@@ -12,3 +12,10 @@ Prompt user id:
 <li> <%= link_to('Edit', edit_prompt_path(@prompt.id)) %> </li>
 <li> <%= link_to('Delete', prompt_path(@prompt.id), method: :delete) %></li>  
   </ul>
+<br>
+  -------------
+
+
+<a href="/resources/new"> Create new response</a>
+
+<%= link_to 'New response', new_prompt_response_path(@prompt) %>
