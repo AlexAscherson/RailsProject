@@ -45,7 +45,10 @@ class ResponsesController < ApplicationController
   end
 
   def index
-    @responses = Response.all
+    # @newres = Response.joins('INNER JOIN prompts ON prompts.id = responses.prompt_id')
+    @prompt = Prompt.find(params[:prompt_id])
+    @responses = Response.find_by prompt_id: 1 
+    # WHY DOES THIS WORK?
   end
 end
 

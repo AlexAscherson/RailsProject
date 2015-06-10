@@ -1,12 +1,19 @@
 <h1>Responses#index</h1>
+
 <p>Find me in app/views/responses/index.html.erb</p>
+THIS IS A TEACHER ADMIN PAGE FOR VIEWING RESPONSES
 
-<a href="responses/new"> Create new Response</a>
 
-<p>List of all responses and thier ids</p>
-   <% @responses.each do |response| %>
-   <li> ID: <%= link_to(response.id, response_path(response.id)) %> | User Id: <%= response.user_id %>  </li>
-  <li> <%= link_to('Delete', response_path(response.id), method: :delete) %></li>
-   <li><%= link_to('Edit', edit_response_path(response.id)) %> </li>
-  </ul>
-   <% end %>
+
+<br>
+
+
+
+Here are the responses associated with this Prompt: <br>
+
+<h1>This prompt is called: <%= @prompt.name %> <br> </h1>
+<br>
+It has the following responses
+<% @prompt.responses.each do |response| %>
+  <li><%= response.id %> | <%= response.content %> </li>
+<% end %>
