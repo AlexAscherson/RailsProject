@@ -1,0 +1,15 @@
+<div class= "bodywrap">
+  <div class="body">
+
+    admin page for users
+
+    <ul>
+      <% @users.each do |user| %>
+      <li>
+        <%= user.id %> | <%= user.name %> | <%= user.role %>
+        </li>
+      <% end %>
+      </ul>
+
+    </div>
+  </div>

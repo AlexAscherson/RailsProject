@@ -1,14 +1,50 @@
-<br>
-<p>
-This is the User Index page 
-<br>
+<div class='bodywrap'>
+  
 
-<% if user_signed_in? %>
+  <div class='body'>
+  
+    <% if user_signed_in? %>
+    <p> Welcome.   </p>
 
-<% if current_user.teacher? %>
-  <p>teacher</p>
-<% elsif current_user.student? %>
-  <p>student</p>
-<% end %>
+      <% if current_user.teacher? %>
+        
+        <div class ="createnew">
+        <a href="prompts/new"> Create new Prompt</a>
+        </div>
+        <p>These are your prompts:</p>
+        <ul>
 
-<% end %>
+        <% current_user.prompts.each do |prompt| %>
+          <li><%= prompt.id %> | <%= prompt.name %> 
+          <%= link_to('Delete', prompt_path(prompt.id), method: :delete) %> | 
+          <%= link_to('Edit', edit_prompt_path(prompt.id)) %> 
+          </li>
+        <% end %>
+
+        </ul>
+
+
+
+      <% elsif current_user.student? %>
+
+        <p>student</p>
+        
+        <p>These are your recent responses </p>
+
+        <% current_user.responses.each do |response| %>
+          <li> 
+          <strong>Prompt name:</strong> <%= Prompt.find(response.prompt_id).name %> <br>
+            <strong>Response id:</strong> <%= response.id %> | <strong>Response: </strong><%= response.content  %> 
+          </li>
+          <br>
+          -----
+          <br>
+        <% end %>
+
+
+
+      <% end %>
+
+    <% end %>
+</div>
+</div>

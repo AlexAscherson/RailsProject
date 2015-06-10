@@ -13,3 +13,76 @@
  *= require_tree .
  *= require_self
  */
+ .adminwrap{
+  width:900px;
+  text-align: center;
+  margin: 0 auto;
+ }
+ .adminnav{
+  width:300px;
+  /*display: inline-block;*/
+  margin: 0 auto;
+  text-align: center;
+  background: rgb(200, 25, 25); /* Fall-back for browsers that don't support rgba */        
+  background: rgba(200, 200, 200, .9);
+}
+
+  .signinbox{
+  width:300px;
+  margin: 0 auto;
+  float: left;
+  /*display: inline-block;*/
+}
+
+.welcomemessage{
+  width:300px;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+/*General css*/
+
+ul
+{
+    list-style-type: none;
+    padding: 0px;
+}
+
+html { 
+  background: url(background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.bodywrap{
+  text-align: center;
+
+
+
+
+}
+
+.body {
+  width: 900px;
+  margin: 0 auto;
+  background: rgb(200, 25, 25); /* Fall-back for browsers that don't support rgba */        
+  background: rgba(200, 200, 200, .9);
+
+}
+
+.createnew{
+
+}
+
+/* Prompt pages css*/
+
+
+
+
+
+
+
+
+

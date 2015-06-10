@@ -9,12 +9,12 @@ class PromptsController < ApplicationController
   end
 
   def update
-  Prompt.find(params[:id]).update(prompt_params)
+    Prompt.find(params[:id]).update(prompt_params)
     redirect_to(prompts_path)
   end
 
   def edit
-  @prompt =Prompt.find(params[:id])
+    @prompt =Prompt.find(params[:id])
   end
 
   def destroy
@@ -30,10 +30,11 @@ class PromptsController < ApplicationController
   def index
     @prompts = Prompt.all
   end
-end
 
-private
+  private
 
     def prompt_params
       params.require(:prompt).permit(:name, :class_id, :user_id)
     end
+end
+

@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   resources :prompts do 
-    resources :responses
+  resources :responses
+
   end
 
 
 
-  # get 'responses/new'
+  get 'users/admin'
 
   # get 'responses/create'
 

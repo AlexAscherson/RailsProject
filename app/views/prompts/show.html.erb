@@ -1,21 +1,49 @@
-<h1>Prompts#show</h1>
-<p>Find me in app/views/prompts/show.html.erb</p>
+<div class="bodywrap">
+  <div class="body">
+    <h1>View Prompt</h1>
 
-Prompt id: 
-<%= @prompt.id %> <br>
-Prompt user id:
-<%= @prompt.user_id %>  <br>
+    <p>Prompt Name: <%= @prompt.name %> </p>
+    <p>Prompt Creator: <%= @prompt.user_id %>  </p>
+    
+    <p>
+      <ul>
+        <li> <%= link_to('Edit', edit_prompt_path(@prompt.id)) %> </li>
+        <li> <%= link_to('Delete', prompt_path(@prompt.id), method: :delete) %></li>  
+        </ul>
+      </p>
+    
+      -------------
+
+    <%= link_to 'New response', new_prompt_response_path(@prompt) %>
 
 
-
-  <ul>
-<li> <%= link_to('Edit', edit_prompt_path(@prompt.id)) %> </li>
-<li> <%= link_to('Delete', prompt_path(@prompt.id), method: :delete) %></li>  
-  </ul>
+    Here are the responses associated with this Prompt: 
 <br>
-  -------------
+
+<h1>This prompt is called: <%= @prompt.name %></h1>
+
+<h3>Response users:</h3>
+<ul>
+  <% @prompt.responses.each do | response| %>
+    <li><%= response.user.try(:name) %> </li>
+  <% end %>
+</ul>
 
 
-<a href="/resources/new"> Create new response</a>
+<h3>Response summary:</h3>
+<p>Select all of the responses from the prompt and group by the number of responses that.</p>
+<ul>
+  <% @prompt.response_counts.each do |response, count| %>
+    <li><%= response.content %>, <%= count %></li>
+  <% end %>
+</ul>
 
-<%= link_to 'New response', new_prompt_response_path(@prompt) %>
+
+<h3>Responses:</h3>
+<ul>
+  <% @prompt.responses.each do |response| %>
+    <li><%= response.id %> | <%= response.content %></li>
+  <% end %>
+</ul>
+
+</div>
