@@ -2,42 +2,36 @@
   <div class="body">
     <% if user_signed_in? %>
       <% if current_user.teacher? %>
-        <p>     <h1>Administer Prompts</h1>   </p>
-        <% @prompts.each do |prompt| %>
-          <ul>
-            <li> <%= link_to(prompt.name, prompt_path(prompt.id)) %> 
-            <!-- | Prompt Id: <%= prompt.id %>  | User Id: <%= prompt.user_id %>  -->
-            <%= link_to('Delete', prompt_path(prompt.id), method: :delete) %> | 
-            <%= link_to('Edit', edit_prompt_path(prompt.id)) %> 
-          </ul>
-        <% end %>
-       
+        <p><h1>Administer Prompts</h1></p>
+        <ul class="prompts">
+          <%= render @prompts %>
+        </ul>
       <% elsif current_user.student? %>
 
       Please respond to the following outstanding prompts.
-      
-
-        <% @prompts.each do |prompt| %>
-
-          <% responsearray = [] %>
-          <% prompt.responses.each do |promptresponse| %>
-            <% responsearray << promptresponse.user_id %>
-          <% end %>
-
-          <% unless responsearray.include?(current_user.id) %>
-            <ul>
-              <li>
-              <%= link_to(prompt.name, prompt_path(prompt.id)) %> 
-              <%= link_to 'Respond', new_prompt_response_path(prompt.id) %>
-              </li>
-            </ul>
-          <% end %>
-    
+        <ul class ='prompts'>
+          <% @user_prompts.each do |prompt| %>
+            <li class='prompt'>
+              <ul>
+                <li class ='name'><%= link_to(prompt.name, prompt_path(prompt.id)) %></li> 
+                  <li> 
+                    <ul>
+                      <li>
+                      <%= link_to 'Respond', new_prompt_response_path(prompt.id) %>
+                      </li>
+                    </ul>
+                  </li>
+              </ul>
+            </li>
+        
         <% end %>
+        </ul>
+
+
+       
       
       <% end %>
     <% end %>
 
    </div>
-   
 </div>

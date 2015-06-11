@@ -1,3 +1,33 @@
-// Place all the styles related to the prompts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.prompts {
+  background: white;
+  width: 100%;
+
+  li.prompt {
+    width: 100%;
+    text-align: left;
+    background: white;
+    margin: 0 0 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    
+    ul {
+      li {
+        &.name, &.response-count  {
+          display: block;
+          width: 100%;
+        }
+        &.name { font-size: 25px; }
+        &.response-count { font-size: 14px; }
+
+        ul {
+          display: block;
+          width: 100%;
+          text-align: right;
+          li {
+            display: inline-block
+          }
+        }
+      }
+    } 
+  }
+}

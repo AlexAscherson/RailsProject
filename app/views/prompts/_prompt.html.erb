@@ -1,0 +1,12 @@
+<li class="prompt"> 
+  <ul>
+    <li class="name"><%= link_to(prompt.name, prompt_path(prompt.id)) %></li>
+    <li class="response-count"><%= prompt.responses.count %> responses</li>
+    <li>
+      <ul>
+        <li><%= link_to image_tag("edit.png") +"Edit", edit_prompt_path(prompt.id), :class=>"small-icon", method: :delete %></li>
+        <li><%= link_to image_tag("delete.png") +"Delete", prompt_path(prompt.id), :class=>"small-icon", method: :delete %></li>
+      </ul>
+    </li>
+  </ul>
+</li>

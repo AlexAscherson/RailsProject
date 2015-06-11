@@ -12,12 +12,23 @@ Response.delete_all
 User.delete_all
 
 c1 =  User.create(name:'Lauren', role:'Teacher', email:'lauren@email.com', password: 'password')
-c2 =  User.create(name:'Alex', role:'Student', email:'alex@email.com', password: 'password')
-c3 =  User.create(name:'Tom', role:'Student', email:'lauren@email.com', password: 'password')
+c2 =  User.create(name:'Dan', role:'Teacher', email:'dan@email.com', password: 'password')
+
+c3 =  User.create(name:'Alex', role:'Student', email:'alex@email.com', password: 'password')
+c4 =  User.create(name:'Tom', role:'Student', email:'a@email.com', password: 'password')
+c5 =  User.create(name:'Betamax Slim', role:'Student', email:'b@email.com', password: 'password')
+
+
 
 
 p1 =  Prompt.create(name: 'First Prompt', user_id: 1)
-p2 =  Prompt.create(name: 'Second Prompt', user_id: 1)
+p2 =  Prompt.create(name: 'Second Prompt', user_id: 2)
+
+r1 =  Response.create(prompt_id: '1', user_id: '3', content: 'I understood this part of the lesson')
+r2 =  Response.create(prompt_id: '1', user_id: '4', content: 'I understood this part of the lesson')
+r3 =  Response.create(prompt_id: '1', user_id: '5', content: 'I understood this part of the lesson')
+r4 =  Response.create(prompt_id: '2', user_id: '3', content: 'I understood this part of the lesson')
+r5 =  Response.create(prompt_id: '2', user_id: '4', content: 'I understood this part of the lesson')
 
 
 

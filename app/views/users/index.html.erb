@@ -9,6 +9,16 @@
 
       <% if current_user.teacher? %>
 
+        <p>
+        <%= link_to image_tag("new.png")+"Create a new Prompt", 'prompts/new', :class=>"home-icon" %>
+        </p>
+        <p>
+        <%= link_to image_tag("list.png")+"View All Prompts", 'prompts', :class=>"home-icon" %>
+        </p>
+        <p>
+        <%= link_to image_tag("users.png")+"View All Users", 'users/admin', :class=>"home-icon" %>
+        </p>
+
         <p>These are your prompts:</p>
         
         <ul>
@@ -17,10 +27,13 @@
 
           <%= prompt.responses.count %>
           
+          <%= link_to image_tag("edit.png") +"Edit", edit_prompt_path(prompt.id), :class=>"small-icon", method: :delete %> 
+
+          <%= link_to image_tag("delete.png") +"Delete", prompt_path(prompt.id), :class=>"small-icon", method: :delete %> 
 
 
-          <%= link_to('Delete', prompt_path(prompt.id), method: :delete) %> | 
-          <%= link_to('Edit', edit_prompt_path(prompt.id)) %> 
+    
+         
           </li>
         <% end %>
         </ul>

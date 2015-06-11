@@ -1,4 +1,10 @@
 class PromptsController < ApplicationController
+  
+  def index
+    @prompts = Prompt.all
+    @user_prompts = Prompt.not_responded(current_user)
+  end
+
   def new
     @prompt = Prompt.new
   end
@@ -25,11 +31,6 @@ class PromptsController < ApplicationController
 
   def show
     @prompt = Prompt.find(params[:id])
-  end
-
-  def index
-    @prompts = Prompt.all
-    @dontprint = 0
   end
 
   private

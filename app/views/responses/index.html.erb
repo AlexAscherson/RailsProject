@@ -1,35 +1,41 @@
-<h1>Responses#index</h1>
+<div class ="bodywrap">
+  <div class="body">
 
-<p>Find me in app/views/responses/index.html.erb</p>
+  <h1>Responses#index</h1>
 
-THIS IS A TEACHER ADMIN PAGE FOR VIEWING RESPONSES
-<br>
+  <p>Find me in app/views/responses/index.html.erb</p>
 
-Here are the responses associated with this Prompt: 
-<br>
+  THIS IS A TEACHER ADMIN PAGE FOR VIEWING RESPONSES
+  <br>
 
-<h1>This prompt is called: <%= @prompt.name %></h1>
+  Here are the responses associated with this Prompt: 
+  <br>
 
-<h3>Response users:</h3>
-<ul>
-  <% @prompt.responses.each do | response| %>
-    <li><%= response.user.try(:name) %> </li>
-  <% end %>
-</ul>
+  <h1>This prompt is called: <%= @prompt.name %></h1>
 
-
-<h3>Response summary:</h3>
-<p>Select all of the responses from the prompt and group by the number of responses that.</p>
-<ul>
-  <% @prompt.response_counts.each do |response, count| %>
-    <li><%= response.content %>, <%= count %></li>
-  <% end %>
-</ul>
+  <h3>Response users:</h3>
+  <ul>
+    <% @prompt.responses.each do | response| %>
+      <li><%= response.user.try(:name) %> </li>
+    <% end %>
+  </ul>
 
 
-<h3>Responses:</h3>
-<ul>
-  <% @prompt.responses.each do |response| %>
-    <li><%= response.id %> | <%= response.content %></li>
-  <% end %>
-</ul>
+  <h3>Response summary:</h3>
+  <p>Select all of the responses from the prompt and group by the number of responses that.</p>
+  <ul>
+    <% @prompt.response_counts.each do |response, count| %>
+      <li><%= response.content %>, <%= count %></li>
+    <% end %>
+  </ul>
+
+
+  <h3>Responses:</h3>
+  <ul>
+    <% @prompt.responses.each do |response| %>
+      <li><%= response.id %> | <%= response.content %></li>
+    <% end %>
+  </ul>
+
+  </div>
+</div>

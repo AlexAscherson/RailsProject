@@ -2,7 +2,7 @@
   <div class="body">
     <h1>View Prompt</h1>
 
-    <p>Prompt Name: <%= @prompt.name %> </p>
+     <h2><%= @prompt.name %> </h2>
     <p>Prompt Creator: <%= @prompt.user.name %>  </p>
     <%= link_to 'New response', new_prompt_response_path(@prompt) %>
     
@@ -15,7 +15,7 @@
         </ul>
       </p>
       -------------
-    <h1>Responses</h1>
+    <h1>Responses: <%= @prompt.responses.count %> </h1>
 
     <h3>Users who have responded:</h3>
     <ul>
@@ -25,16 +25,26 @@
     </ul>
 
     <h3>Response summary:</h3>
+
+    <% groupcount = @prompt.responses.group(:content).count %>
+    <% groupcount.each do |response| %>
+     <li><%= response %></li>
+      <% end %>
+      <!-- ABOVE ONE ACTUALLY WORKS -->
+
+
     <ul>
       <% @prompt.response_counts.each do |response, count| %>
         <li><%= response.content %> - <%= count %></li>
+
+
       <% end %>
     </ul>
 
     <h3>Responses by User:</h3>
     <ul>
       <% @prompt.responses.each do |response| %>
-        <li><%= response.user.name %> | <%= response.content %></li>
+        <li><%= response.user.name %> - <%= response.content %></li>
       <% end %>
     </ul>
 

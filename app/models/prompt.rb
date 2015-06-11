@@ -5,8 +5,10 @@ class Prompt < ActiveRecord::Base
   # has_many :prompt_responses
   # has_many :responses, through: :prompt_responses
 
-  def index
-    @prompts = Prompt.all
+  def self.not_responded(current_user)
+    Prompt.all - current_user.responses.map do |response| 
+      response.prompt
+    end
   end
 
   def response_counts

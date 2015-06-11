@@ -7,56 +7,78 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class='navwrap'>
 
-<div class='navwrap'>
+    <div class="adminnav">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-
-
-<div class="adminnav">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <div class="signinbox">
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-    <% end %>
-  </div>
-
-
-  <div class="welcomemessage">
-
-    <% if user_signed_in? %>
-
-      <% if current_user.teacher? %>
-        <p>Welcome <%= current_user.name %> You are a Teacher </p>
-        <ul class = 'adminlinks'>
-          <li><a href="/users/admin">List all Users</li></a>
-          <li><a href="/prompts">Administer All Prompts</li></a>
-          <li><a href="/prompts/new"> Create new Prompt</a></li>
-          
-        </ul>
-
-
-      <% elsif current_user.student? %>
-        <p>Welcome <%= current_user.name %> You are Student number <%= current_user.id %>  </p>
-        <ul class = 'studentlinks'>
-          <li><a href="/prompts">Respond to a Prompt</li></a>
-          <li><a href="/">View Your Responses</li></a>
-        </ul>
-
-      
+      <div class="signinbox">
+      <% if user_signed_in? %>
+        Welcome <strong><%= current_user.name %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
       <% end %>
-    <% end %>
-  </div>
-</div>
+      </div>
 
-<%= yield %>
+      <nav id="primary_nav_wrap">
+        <ul>
+          <li class="current-menu-item"><a href="/">Home</a></li>
+      
+          <% if current_user.teacher? %>
+            <li><a href="/">Admin Menu</a>
+              <ul>
+                <li><a href="/prompts">Admin Prompts</a>
+                  <ul>
+                    <li><a href="prompts/new">Create New Prompt</a></li>
+                    <li><a href="/">View Your Prompts</a></li>
+                    <li><a href="prompts">View All Prompts</a></li>
+                  </ul>
+                </li>
 
-</div>
-</body>
-</html>
+                <li><a href="#">Admin Responses</a>
+                  <ul>
+                    <li><a href="#">View All Responses</a></li>
+                  </ul>
+                </li>
+
+                <li><a href="users/admin">Admin Users</a>
+                  <ul>
+                    <li><a href="users/admin">View All Users</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+        
+          <% end %>
+        
+          <% if current_user.student? %>
+            <li><a href="/">Student Menu</a>
+                <ul>
+                  <li><a href="prompts">Prompts</a>
+                    <ul>
+                      <li><a href="prompts">View Outstanding Prompts</a></li>                  
+                    </ul>
+                  </li>
+
+                  <li><a href="/">Responses</a>
+                    <ul>
+                      <li><a href="/">View All Your Responses</a></li>
+                    </ul>
+                  </li>   
+                </ul>
+            </li>         
+          <% end %>
+
+        </nav>
+
+      </div>
+    </div>
+
+    <%= yield %>
+
+    </body>
+    </html>
