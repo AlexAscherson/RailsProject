@@ -1,17 +1,21 @@
-<h1>Responses#show</h1>
-<p>Find me in app/views/responses/show.html.erb</p>
+<div class ="bodywrap">
+  <div class="body">
 
-Response id: 
-<%= @response.id %> <br>
-Response user id:
-<%= @response.user_id %>  <br>
-Prompt id:
-<%= @response.prompt_id %>
+  <h1>Your response to <%= @prompt.name %> was:<br>
+      <%= @response.content %>
+  </h1>
+
+  <p>Response id: <%= @response.id %> </p>
+  <p>Response content: <%= @response.content %> </p>
+  <p>Response user id: <%= @response.user_id %>  </p>
+  <p>Prompt id: <%= @response.prompt_id %> </p>
+
 
   <ul>
-<li> <%= link_to('Edit', edit_prompt_response_path(@prompt.id, @response.id)) %> </li>
-<li> <%= link_to('Delete', prompt_response_path(@prompt.id, @response.id), method: :delete) %></li>
+  <li> <%= link_to('Edit', edit_prompt_response_path(@prompt.id, @response.id)) %> </li>
+  <li> <%= link_to('Delete', prompt_response_path(@prompt.id, @response.id), method: :delete) %></li>
    
   </ul>
-
+  </div>
+</div>
 

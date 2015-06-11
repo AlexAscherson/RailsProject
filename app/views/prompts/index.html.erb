@@ -1,40 +1,39 @@
-
 <div class ="bodywrap">
- 
-  
-
   <div class="body">
-
-    
-
-   ------
-
-   <% if user_signed_in? %>
-
+    <% if user_signed_in? %>
       <% if current_user.teacher? %>
-
-      <div class ="createnew">
-      <a href="prompts/new"> Create new Prompt</a>
-    </div>
-
-     <p>List of all prompts and their ids</p>
-     <% @prompts.each do |prompt| %>
-      <ul>
-        <li> <%= link_to(prompt.name, prompt_path(prompt.id)) %> 
-
-        <!-- | Prompt Id: <%= prompt.id %>  | User Id: <%= prompt.user_id %>  -->
-        -
-        <%= link_to('Delete', prompt_path(prompt.id), method: :delete) %> | 
-        <%= link_to('Edit', edit_prompt_path(prompt.id)) %> 
-      </ul>
-     <% end %>
+        <p>     <h1>Administer Prompts</h1>   </p>
+        <% @prompts.each do |prompt| %>
+          <ul>
+            <li> <%= link_to(prompt.name, prompt_path(prompt.id)) %> 
+            <!-- | Prompt Id: <%= prompt.id %>  | User Id: <%= prompt.user_id %>  -->
+            <%= link_to('Delete', prompt_path(prompt.id), method: :delete) %> | 
+            <%= link_to('Edit', edit_prompt_path(prompt.id)) %> 
+          </ul>
+        <% end %>
        
-
       <% elsif current_user.student? %>
 
-      Should show a list of your responses here.
-        
+      Please respond to the following outstanding prompts.
+      
 
+        <% @prompts.each do |prompt| %>
+
+          <% responsearray = [] %>
+          <% prompt.responses.each do |promptresponse| %>
+            <% responsearray << promptresponse.user_id %>
+          <% end %>
+
+          <% unless responsearray.include?(current_user.id) %>
+            <ul>
+              <li>
+              <%= link_to(prompt.name, prompt_path(prompt.id)) %> 
+              <%= link_to 'Respond', new_prompt_response_path(prompt.id) %>
+              </li>
+            </ul>
+          <% end %>
+    
+        <% end %>
       
       <% end %>
     <% end %>
@@ -42,6 +41,3 @@
    </div>
    
 </div>
-
-     <h1>THIS IS AN ADMIN PAGE FOR TEACHERS</h1>
-

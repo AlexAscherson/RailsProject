@@ -3,47 +3,42 @@
     <h1>View Prompt</h1>
 
     <p>Prompt Name: <%= @prompt.name %> </p>
-    <p>Prompt Creator: <%= @prompt.user_id %>  </p>
+    <p>Prompt Creator: <%= @prompt.user.name %>  </p>
+    <%= link_to 'New response', new_prompt_response_path(@prompt) %>
     
+    
+    <% if current_user.teacher? %>
     <p>
       <ul>
         <li> <%= link_to('Edit', edit_prompt_path(@prompt.id)) %> </li>
         <li> <%= link_to('Delete', prompt_path(@prompt.id), method: :delete) %></li>  
         </ul>
       </p>
-    
       -------------
+    <h1>Responses</h1>
 
-    <%= link_to 'New response', new_prompt_response_path(@prompt) %>
+    <h3>Users who have responded:</h3>
+    <ul>
+      <% @prompt.responses.each do | response | %>
+        <li><%= response.user.try(:name) %> </li>
+      <% end %>
+    </ul>
 
+    <h3>Response summary:</h3>
+    <ul>
+      <% @prompt.response_counts.each do |response, count| %>
+        <li><%= response.content %> - <%= count %></li>
+      <% end %>
+    </ul>
 
-    Here are the responses associated with this Prompt: 
-<br>
+    <h3>Responses by User:</h3>
+    <ul>
+      <% @prompt.responses.each do |response| %>
+        <li><%= response.user.name %> | <%= response.content %></li>
+      <% end %>
+    </ul>
 
-<h1>This prompt is called: <%= @prompt.name %></h1>
+    <% end %>
 
-<h3>Response users:</h3>
-<ul>
-  <% @prompt.responses.each do | response| %>
-    <li><%= response.user.try(:name) %> </li>
-  <% end %>
-</ul>
-
-
-<h3>Response summary:</h3>
-<p>Select all of the responses from the prompt and group by the number of responses that.</p>
-<ul>
-  <% @prompt.response_counts.each do |response, count| %>
-    <li><%= response.content %>, <%= count %></li>
-  <% end %>
-</ul>
-
-
-<h3>Responses:</h3>
-<ul>
-  <% @prompt.responses.each do |response| %>
-    <li><%= response.id %> | <%= response.content %></li>
-  <% end %>
-</ul>
-
+  </div>
 </div>

@@ -21,4 +21,13 @@ class User < ActiveRecord::Base
     self.role.downcase == 'student'
     end
   end
+
+  def response_counts
+    self.responses.reduce(Hash.new(0)) do |total, e| 
+      total[e] += 1 
+      total
+    end
+  end
+
+  
 end

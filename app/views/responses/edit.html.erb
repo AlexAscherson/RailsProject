@@ -1,17 +1,22 @@
-<h1>Responses#edit</h1>
-<p>Find me in app/views/responses/edit.html.erb</p>
+<div class ="bodywrap">
+  <div class="body">
 
-<%= form_for [@prompt, @response] do |f| %>
+  <h1>Edit Response</h1>
+  <p>Find me in app/views/responses/edit.html.erb</p>
 
+  <%= form_for [@prompt, @response] do |f| %>
+    <%= f.select(:content, ['I understood this part of the lesson', 'I did not undertand this part of the lesson', 'You are going to fast', 'Please repeat this part of the lesson'], {include_blank: :content}, { :class => 'my_style_class' }) %>
+   
+    Enter the User its associated with: <br>
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %><br>
 
- Enter the User its associated with: <br>
- <%= f.label :user_id %>
- <%= f.number_field :user_id %><br>
+    Enter the prompt its associated with: <br>
+    <%= f.label :prompt_id %>
+    <%= f.number_field :prompt_id %><br>
+    
+    <%= f.submit 'Update response' %>
+  <% end %>
 
- Enter the prompt its associated with: <br>
- <%= f.label :prompt_id %>
- <%= f.number_field :prompt_id %><br>
-  
-
-  <%= f.submit 'Update response' %>
-<% end %>
+  </div>
+</div>

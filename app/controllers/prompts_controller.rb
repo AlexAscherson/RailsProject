@@ -29,6 +29,7 @@ class PromptsController < ApplicationController
 
   def index
     @prompts = Prompt.all
+    @dontprint = 0
   end
 
   private

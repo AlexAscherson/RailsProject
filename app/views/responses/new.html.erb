@@ -1,24 +1,16 @@
-<h1>Responses#new</h1>
-<p>Find me in app/views/responses/new.html.erb</p>
+<div class ="bodywrap">
+  <div class="body">
 
+  <h1>Response to:<br> <%= @prompt.name %></h1>
+  <%= form_for [@prompt, @response] do |f| %>
 
+   <%= f.hidden_field :user_id, :value => current_user.id %>
+   <%= f.hidden_field :prompt_id, :value => @prompt.id %>
 
-<%= form_for [@prompt, @response] do |f| %>
+   <%= f.select(:content, ['I understood this part of the lesson', 'I did not undertand this part of the lesson', 'You are going to fast', 'Please repeat this part of the lesson'], {include_blank: "What are you feeling?"}, { :class => 'my_style_class' }) %>
+   
+    <%= f.submit 'Create response' %>
+  <% end %>
 
-
- <%= f.hidden_field :user_id, :value => current_user.id %>
- <%= f.hidden_field :prompt_id, :value => @prompt.id %>
-
- <%= f.select(:content, ['I understood this part of the lesson', 'I did not undertand this part of the lesson', 'You are going to fast', 'Please repeat this part of the lesson'], {include_blank: "What are you feeling?"}, { :class => 'my_style_class' }) %>
-
- 
-
-
-
-
-
-
-  
-
-  <%= f.submit 'Create response' %>
-<% end %>
+ </div>
+</div> 

@@ -1,7 +1,12 @@
-<%= form_for @user do |f| %>
+<div class ="bodywrap">
+  <div class="body">
+  <%= form_for @user do |f| %>
 
- <%= f.label :name %>
- <%= f.text_field :name %>
+   <%= f.label :name %>
+   <%= f.text_field :name %>
 
-  <%= f.submit 'Create user' %>
-<% end %>
+    <%= f.submit 'Create user' %>
+  <% end %>
+
+  </div>
+</div>

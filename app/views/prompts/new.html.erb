@@ -1,12 +1,15 @@
-<h1>Prompts#new</h1>
-<p>Find me in app/views/prompts/new.html.erb</p>
+<div class="bodywrap">
+  <div class="body">
+  <h1>Create new Prompt</h1>
 
-<%= form_for @prompt do |f| %>
+  <%= form_for @prompt do |f| %>
 
- <%= f.label :name %>
- <%= f.text_field :name %>
+   <%= f.label :name %>
+   <%= f.text_field :name %>
 
- <%= f.hidden_field :user_id, :value => current_user.id %>
+   <%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <%= f.submit 'Create Prompt' %>
-<% end %>
+    <%= f.submit 'Create Prompt' %>
+  <% end %>
+  </div>
+</div>
