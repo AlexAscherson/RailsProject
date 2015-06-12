@@ -60,9 +60,9 @@
           <% if current_user.student? %>
             <li><a href="/">Student Menu</a>
                 <ul>
-                  <li><a href="prompts">Prompts</a>
+                  <li><a href="/prompts">Prompts</a>
                     <ul>
-                      <li><a href="prompts">View Outstanding Prompts</a></li>                  
+                      <li><a href="/prompts">View Outstanding Prompts</a></li>                  
                     </ul>
                   </li>
 
@@ -86,13 +86,21 @@
       <div class="nav2">
       Second box
 
-      
-        <ul class="nav2ul">
-          <% current_user.prompts.each do |prompt| %>
-            <li class="navprompt"><%= prompt.name %> | <%= prompt.responses.count %>
-            <% end %>
-            </li>
-        </ul>
+        <% if current_user.teacher? %>
+          <ul class="nav2ul">
+            <% navprompts = current_user.prompts.all.order('created_at DESC').take(3) %>
+            <% navprompts.each do |prompt| %>
+              <li class="navprompt"><%= link_to(prompt.name, prompt_path(prompt.id)) %> | <%= prompt.responses.count %>
+              <% end %>     
+          </ul>
+        <% end %>
+
+        <% if current_user.student? %>
+          <ul class ='navprompts'>
+                    You have<br>
+          <div id="outstandingwarning"><%= @user_prompts.count %></div>   
+              Outstanding Prompts!
+        <% end %>
 
 
       </div>

@@ -2,7 +2,7 @@ class PromptsController < ApplicationController
   
   def index
     @prompts = Prompt.all
-    @user_prompts = Prompt.not_responded(current_user)
+    
   end
 
   def new
@@ -38,5 +38,7 @@ class PromptsController < ApplicationController
     def prompt_params
       params.require(:prompt).permit(:name, :class_id, :user_id)
     end
+
+    
 end
 

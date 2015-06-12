@@ -1,6 +1,9 @@
 class ResponsesController < ApplicationController
   before_filter :set_prompt
 
+
+
+
   def new
     @response = Response.new
   end
@@ -47,6 +50,7 @@ class ResponsesController < ApplicationController
   private
     def set_prompt
       @prompt = Prompt.find(params[:prompt_id])
+      @user_prompts = Prompt.not_responded(current_user)
         #this is running on every action.  See top. 
     end
 
