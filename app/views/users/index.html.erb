@@ -45,7 +45,7 @@
         <p>These are your recent responses </p>
 
         <% current_user.responses.each do |response| %>
-          <li> 
+          <li class="user-response"> 
           <strong>Prompt name:</strong> <%= Prompt.find(response.prompt_id).name %> <br>
           <strong>Response: </strong><%= response.content  %> 
           </li>

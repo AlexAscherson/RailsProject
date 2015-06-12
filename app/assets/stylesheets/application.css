@@ -27,6 +27,20 @@
   margin: 0 auto;
 }
 
+.newnav {
+  width: 300px;
+  float: left;
+}
+
+.nav2 {
+  width: 300px;
+  height: 90px;
+  display: inline-block;
+  clear: both;
+  background-color: white;
+
+}
+
 .adminnav{
   /*display: inline-block;*/
 
@@ -42,11 +56,17 @@ ul {
 }
 
 html { 
-  background: url(background.jpg) no-repeat center center fixed; 
+  background: url(wdibg.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+/* Landing page*/
+
+.user-response{
+  border: solid black 1px;
 }
 
 .bodywrap{
@@ -55,6 +75,7 @@ html {
 }
 
 .body {
+  clear: both;
   width: 600px;
   margin: 0 auto;
   background: rgb(200, 25, 25); /* Fall-back for browsers that don't support rgba */        
@@ -64,6 +85,7 @@ html {
 .home-icon img{
   width: 50px;
   height: 50px;
+  vertical-align: middle;
 }
 
 .small-icon img{

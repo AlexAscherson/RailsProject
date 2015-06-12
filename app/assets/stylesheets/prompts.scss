@@ -1,6 +1,7 @@
 .prompts {
   background: white;
-  width: 100%;
+  width: 300px;
+
 
   li.prompt {
     width: 100%;
@@ -9,6 +10,7 @@
     margin: 0 0 20px;
     padding: 20px;
     box-sizing: border-box;
+    border: solid black 1px;
     
     ul {
       li {
